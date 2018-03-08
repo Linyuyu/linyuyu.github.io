@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Front End on Yuyu</title>
+    <link>http://localhost:1313/categories/front-end/</link>
+    <description>Recent content in Front End on Yuyu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 08 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/front-end/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Function.call 和 Function.apply 的區別</title>
+      <link>http://localhost:1313/post/call_apply/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/call_apply/</guid>
+      <description>Function.call vs Function.apply call 和 apply 都是 Function.prototype 的方法，是 JavaScript 引擎內在就實現了，也就是說所有的 Function 實體，都有 call 和 apply 方法。 區別它們的差異可以簡單的用一段程式碼理解： this.fun(arg1, arg2) == fun.call(this, arg1, arg2)</description>
+    </item>
+    
+  </channel>
+</rss>
