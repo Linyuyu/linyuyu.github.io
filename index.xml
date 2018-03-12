@@ -23,6 +23,15 @@ It makes use of a variety of open source projects including:
     </item>
     
     <item>
+      <title>基礎觀念：Function.bind</title>
+      <link>http://localhost:1313/post/function_bind/</link>
+      <pubDate>Mon, 12 Mar 2018 15:01:38 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/function_bind/</guid>
+      <description>Function.bind 是什麼？ 如同字面上的含義 bind 就是綁定，那到底綁定什麼呢？我們先看一下它的定義： someMethod.bind(thisArg[, arg1[, arg2[, ...]]]) thisArg: 呼叫 someMethod 傳進去當作 this 的值。 看出來了嗎？簡單的說就是當你</description>
+    </item>
+    
+    <item>
       <title>基礎觀念： Function.call 和 Function.apply 的區別</title>
       <link>http://localhost:1313/post/function_call_apply/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
@@ -34,7 +43,7 @@ It makes use of a variety of open source projects including:
     <item>
       <title>基礎觀念： IIFE 立即執行函式</title>
       <link>http://localhost:1313/post/function_iife/</link>
-      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 26 May 2017 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/function_iife/</guid>
       <description>IIFE 立即執行函示 IIFE (Immediately Invoked Function Expression) 是一個定義完馬上就執行的 JavaScript function。 // example 1 (function () { // do something console.log(&#39;invoked&#39;) })() // example 2 (() =&amp;gt; { console.log(&#39;invoked&#39;) })() 它又稱為 Self-Executing Anonymous Function，也是</description>
