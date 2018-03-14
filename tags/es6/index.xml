@@ -26,7 +26,7 @@
       <pubDate>Fri, 26 May 2017 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/function_iife/</guid>
-      <description>IIFE 立即執行函示 IIFE (Immediately Invoked Function Expression) 是一個定義完馬上就執行的 JavaScript function。 // example 1 (function () { // do something console.log(&#39;invoked&#39;) })() // example 2 (() =&amp;gt; { console.log(&#39;invoked&#39;) })() 它又稱為 Self-Executing Anonymous Function，也是</description>
+      <description>IIFE 立即執行函式 IIFE (Immediately Invoked Function Expression) 是一個定義完馬上就執行的 JavaScript function。 // example 1 (function () { // do something console.log(&#39;invoked&#39;) })() // example 2 (() =&amp;gt; { console.log(&#39;invoked&#39;) })() 它又稱為 Self-Executing Anonymous Function，也是</description>
     </item>
     
   </channel>
