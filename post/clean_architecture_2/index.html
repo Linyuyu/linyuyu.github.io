@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>基礎觀念：Function.bind - Yuyu</title>
+  <title>無暇的架構 Clean Architecture II - Yuyu</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="Yuyu, Lin" />
-  <meta name="description" content="Function.bind 是什麼？ 如同字面上的含義 bind 就是綁定，那到底綁定什麼呢？我們先看一下它的定義： someMethod.bind(thisArg[, arg1[, arg2[, ...]]]) thisArg: 呼叫 someMethod 傳進去當作 this 的值。 看出來了嗎？簡單的說就是當你" />
+  <meta name="description" content="The Clean Architecture II 前一篇我們介紹了 Clean Architecture 的主要精神與概念，現在我們來細部看一些層與名詞的定義 第一張圖是 Uncle Bob 的原圖 第二張是 App 常用到的簡化圖 Entities Entities 是 App 的核心，" />
 
   <meta name="keywords" content="iOS, Front End, UX" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.37" />
 
 
-<link rel="canonical" href="http://localhost:1313/post/function_bind/" />
+<link rel="canonical" href="http://localhost:1313/post/clean_architecture_2/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="基礎觀念：Function.bind" />
-<meta property="og:description" content="Function.bind 是什麼？ 如同字面上的含義 bind 就是綁定，那到底綁定什麼呢？我們先看一下它的定義： someMethod.bind(thisArg[, arg1[, arg2[, ...]]]) thisArg: 呼叫 someMethod 傳進去當作 this 的值。 看出來了嗎？簡單的說就是當你" />
+<meta property="og:title" content="無暇的架構 Clean Architecture II" />
+<meta property="og:description" content="The Clean Architecture II 前一篇我們介紹了 Clean Architecture 的主要精神與概念，現在我們來細部看一些層與名詞的定義 第一張圖是 Uncle Bob 的原圖 第二張是 App 常用到的簡化圖 Entities Entities 是 App 的核心，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/function_bind/" />
+<meta property="og:url" content="http://localhost:1313/post/clean_architecture_2/" />
 
 
 
-<meta property="article:published_time" content="2018-03-12T15:01:38&#43;08:00"/>
+<meta property="article:published_time" content="2018-04-19T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-03-12T15:01:38&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-04-19T00:00:00&#43;00:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="基礎觀念：Function.bind">
-<meta itemprop="description" content="Function.bind 是什麼？ 如同字面上的含義 bind 就是綁定，那到底綁定什麼呢？我們先看一下它的定義： someMethod.bind(thisArg[, arg1[, arg2[, ...]]]) thisArg: 呼叫 someMethod 傳進去當作 this 的值。 看出來了嗎？簡單的說就是當你">
-
-
-<meta itemprop="datePublished" content="2018-03-12T15:01:38&#43;08:00" />
-<meta itemprop="dateModified" content="2018-03-12T15:01:38&#43;08:00" />
-<meta itemprop="wordCount" content="132">
 
 
 
-<meta itemprop="keywords" content="ES6&#43;,Front End," />
+
+<meta itemprop="name" content="無暇的架構 Clean Architecture II">
+<meta itemprop="description" content="The Clean Architecture II 前一篇我們介紹了 Clean Architecture 的主要精神與概念，現在我們來細部看一些層與名詞的定義 第一張圖是 Uncle Bob 的原圖 第二張是 App 常用到的簡化圖 Entities Entities 是 App 的核心，">
+
+
+<meta itemprop="datePublished" content="2018-04-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-04-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="638">
+
+
+
+<meta itemprop="keywords" content="Clean Architecture," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基礎觀念：Function.bind"/>
-<meta name="twitter:description" content="Function.bind 是什麼？ 如同字面上的含義 bind 就是綁定，那到底綁定什麼呢？我們先看一下它的定義： someMethod.bind(thisArg[, arg1[, arg2[, ...]]]) thisArg: 呼叫 someMethod 傳進去當作 this 的值。 看出來了嗎？簡單的說就是當你"/>
+<meta name="twitter:title" content="無暇的架構 Clean Architecture II"/>
+<meta name="twitter:description" content="The Clean Architecture II 前一篇我們介紹了 Clean Architecture 的主要精神與概念，現在我們來細部看一些層與名詞的定義 第一張圖是 Uncle Bob 的原圖 第二張是 App 常用到的簡化圖 Entities Entities 是 App 的核心，"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,13 +150,17 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">基礎觀念：Function.bind</h1>
+      <h1 class="post-title">無暇的架構 Clean Architecture II</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-03-12 </span>
+        <span class="post-time"> 2018-04-19 </span>
         <div class="post-category">
             
-              <a href="/categories/front-end/"> Front End </a>
+              <a href="/categories/ios/"> iOS </a>
+            
+              <a href="/categories/android/"> Android </a>
+            
+              <a href="/categories/.net/"> .Net </a>
             
           </div>
         
@@ -171,44 +175,53 @@
     <div class="post-content">
       
 
-<h1 id="function-bind-是什麼">Function.bind 是什麼？</h1>
+<h1 id="the-clean-architecture-ii">The Clean Architecture II</h1>
 
-<p>如同字面上的含義 <code>bind</code> 就是<code>綁定</code>，那到底綁定什麼呢？我們先看一下它的定義：</p>
+<p><img src="https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg" alt="Uncle Bob 原始圖" /></p>
 
-<pre><code class="language-js">someMethod.bind(thisArg[, arg1[, arg2[, ...]]])
-</code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/7120197-f650f23eb5639727?imageMogr2/auto-orient/" alt="App 常用圖" /></p>
+
+<p>前一篇我們介紹了 Clean Architecture 的主要精神與概念，現在我們來細部看一些層與名詞的定義</p>
 
 <ul>
-<li>thisArg: 呼叫 <code>someMethod</code> 傳進去當作 <code>this</code> 的值。</li>
+<li>第一張圖是 Uncle Bob 的原圖</li>
+<li>第二張是 App 常用到的簡化圖</li>
 </ul>
 
+<h2 id="entities">Entities</h2>
+
+<p>Entities 是 App 的核心，透過 Entities 你可以了解 App 想做什麼，有什麼功能，有哪些商業邏輯。
+注意 Entities 定義了規則，但不去實作規則，也不會去驗證規則，也不儲存資料，更不會去跟外層互動。
+比如你發想了一個電子書 App，書櫃書籍，書籍分類，書籍資訊等等都是 <code>Entities</code> 。</p>
+
 <blockquote>
-<p>看出來了嗎？簡單的說就是當你呼叫 <code>someMethod</code> 時，<code>綁定</code> someMethod 內部的 <code>this</code> 到你指定的物件上 (<code>thisArg</code>)。</p>
+<p>我認為 Entites 翻譯成 <code>單元</code>好像比較貼切</p>
 </blockquote>
 
-<h2 id="example">Example</h2>
+<h2 id="use-cases">Use Cases</h2>
 
-<pre><code class="language-js">const name = &quot;Hyweb&quot;
-const club = {
-  name: &quot;R00&quot;,
-  getName: function () {
-    return this.name
-  }
-}
+<p>也稱之為 <code>interactors</code> or <code>business services</code>，是 Entities 的擴展，整合所有的<code>單元</code>。它跟我們實務分析上的 Use Case 是同樣的精神概念，比如<code>把這本書從我的最愛移除 removeFromFavoriteUseCase</code>，或者<code>把這本書的分類從財經改到工具書 changeCategoryFromFinancialToToolsUseCase</code>等等。</p>
 
-const getClubName = club.getName
+<h2 id="repositories">Repositories</h2>
 
-// show `hyweb`
-console.log(getClubName())
+<p>顧名思義，Repositories 提供 Entities 的持久化 (Persistence)，通常會提供 <a href="https://zh.wikipedia.org/wiki/資料操縱語言">CRUD</a> 的介面，或者一些比較有目的性的高階 API，比如跟帳號有關的可以叫做 <code>AccoutnRepository</code> 等等。</p>
 
-// show `R00`
-console.log(getClubName.bind(club)())
-</code></pre>
+<h2 id="presenters">Presenters</h2>
+
+<p>在我的理解上不論你導入的是 MVC, MVP, MVVM，Presenters 扮演的角色有點像是 <code>Controller</code> or <code>Selector</code>，比如在 View 中有方法叫做 <code>onBorrowButtonClicked</code> 和<code>onEntranceListItemSelected</code>，那對應 Presenter 的方法可以叫做 <code>borrowBook</code> 和 <code>selectEntrance</code>。</p>
+
+<h2 id="db-api">DB &amp; API</h2>
+
+<p>通常我們會選擇一些  Database framework 來做整合，常用的比如 realm, sqlite, core data&hellip;&hellip;等等。</p>
+
+<h2 id="device">Device</h2>
+
+<p>諸如一些感應器，鬧鐘，推播，播放器等等，主要也是實作內層定義的抽象 output。</p>
 
 <h2 id="reference">Reference</h2>
 
 <ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">MDN</a></li>
+<li><a href="http://five.agency/android-architecture-part-3-applying-clean-architecture-android/">Android Architecture Part 3</a></li>
 </ul>
 
     </div>
@@ -221,7 +234,7 @@ console.log(getClubName.bind(club)())
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">2018-03-12</span>
+    <span class="item-content">2018-04-19</span>
   </p>
   
   
@@ -233,23 +246,16 @@ console.log(getClubName.bind(club)())
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/es6&#43;/">ES6&#43;</a>
-          
-          <a href="/tags/front-end/">Front End</a>
+          <a href="/tags/clean-architecture/">Clean Architecture</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/clean_architecture_1/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">無暇的架構 Clean Architecture I</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
-          <a class="next" href="/post/function_call_apply/">
-            <span class="next-text nav-default">基礎觀念： Function.call 和 Function.apply 的區別</span>
+          <a class="next" href="/post/clean_architecture_1/">
+            <span class="next-text nav-default">無暇的架構 Clean Architecture I</span>
             <span class="prev-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

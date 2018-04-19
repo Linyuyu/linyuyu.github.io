@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clean Architecture on Yuyu</title>
+    <link>http://localhost:1313/tags/clean-architecture/</link>
+    <description>Recent content in Clean Architecture on Yuyu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/clean-architecture/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>無暇的架構 Clean Architecture II</title>
+      <link>http://localhost:1313/post/clean_architecture_2/</link>
+      <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/clean_architecture_2/</guid>
+      <description>The Clean Architecture II 前一篇我們介紹了 Clean Architecture 的主要精神與概念，現在我們來細部看一些層與名詞的定義 第一張圖是 Uncle Bob 的原圖 第二張是 App 常用到的簡化圖 Entities Entities 是 App 的核心，</description>
+    </item>
+    
+    <item>
+      <title>無暇的架構 Clean Architecture I</title>
+      <link>http://localhost:1313/post/clean_architecture_1/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/clean_architecture_1/</guid>
+      <description>The Clean Architecture I 首先 Clean Architecture 是 Uncle Bob 的心血結晶，他同時也是Clean Code 無瑕的程式碼的作者。大神推的很難看懂還有什麼好説的，立馬入坑！ 這個架構也被稱之為洋蔥</description>
+    </item>
+    
+  </channel>
+</rss>
