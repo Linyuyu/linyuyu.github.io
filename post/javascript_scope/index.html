@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>基礎觀念：JavaScript Scope - Yuyu</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Yuyu, Lin" />
+  <meta name="description" content="JavaScript Scope 變量作用域 JavaScript 有兩種變量作用域： Gloable Scope: 定義在函數之外的為全局變量，整個程序都可以訪問，直到頁面關閉才銷毀。 Local Scope: 定義在函數之內為局部變量，函數" />
+
+  <meta name="keywords" content="iOS, Front End, UX" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/javascript_scope/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.0.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="基礎觀念：JavaScript Scope" />
+<meta property="og:description" content="JavaScript Scope 變量作用域 JavaScript 有兩種變量作用域： Gloable Scope: 定義在函數之外的為全局變量，整個程序都可以訪問，直到頁面關閉才銷毀。 Local Scope: 定義在函數之內為局部變量，函數" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/javascript_scope/" />
+
+
+
+<meta property="article:published_time" content="2018-05-07T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-05-07T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="基礎觀念：JavaScript Scope">
+<meta itemprop="description" content="JavaScript Scope 變量作用域 JavaScript 有兩種變量作用域： Gloable Scope: 定義在函數之外的為全局變量，整個程序都可以訪問，直到頁面關閉才銷毀。 Local Scope: 定義在函數之內為局部變量，函數">
+
+
+<meta itemprop="datePublished" content="2018-05-07T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-05-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1019">
+
+
+
+<meta itemprop="keywords" content="ES6," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基礎觀念：JavaScript Scope"/>
+<meta name="twitter:description" content="JavaScript Scope 變量作用域 JavaScript 有兩種變量作用域： Gloable Scope: 定義在函數之外的為全局變量，整個程序都可以訪問，直到頁面關閉才銷毀。 Local Scope: 定義在函數之內為局部變量，函數"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Be A Programmer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Post</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Be A Programmer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Post</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">基礎觀念：JavaScript Scope</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-05-07 </span>
+        <div class="post-category">
+            
+              <a href="/categories/fornt-end/"> fornt-end </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="javascript-scope">JavaScript Scope</h1>
+
+<p><img src="https://cdn.scotch.io/2526/ZHb3nTeORoCOFOiwXfk1_javascript-uderstanding-scope.png.jpg" alt="" /></p>
+
+<h2 id="變量作用域">變量作用域</h2>
+
+<p>JavaScript 有兩種變量作用域：</p>
+
+<ul>
+<li>Gloable Scope: 定義在<code>函數之外</code>的為<strong>全局變量</strong>，整個程序都可以訪問，直到頁面關閉才銷毀。</li>
+<li>Local Scope: 定義在<code>函數之內</code>為<strong>局部變量</strong>，函數執行開始到結束，會創建與銷毀該變量。</li>
+</ul>
+
+<p>以下列出一些特性：</p>
+
+<ul>
+<li><strong>局部變量不影響全局變量：</strong></li>
+</ul>
+
+<pre><code class="language-js">var str = 'hello';
+
+function test() {
+  var str = 'hi';
+}
+
+test();
+
+str += ' R00.';
+
+console.log(str) // print `hello R00.`
+</code></pre>
+
+<ul>
+<li><strong>沒有宣告視為全局聲明：</strong></li>
+</ul>
+
+<pre><code class="language-js">console.log('hello :' + name) // print `hello Yuyu`
+
+// 此處 function 其實就是一個全局的聲明
+function test() { 
+    name = &quot;Yuyu&quot;;
+}
+
+console.log('hello :' + name) // print `hello Yuyu`
+</code></pre>
+
+<ul>
+<li><strong>閉包將保存局部變量的引用：</strong></li>
+</ul>
+
+<pre><code class="language-js">function greet(name) {
+  
+  return function () {
+    sayHello(name);
+  }
+}
+
+function sayHello(name) {
+  console.log('hello ' + name);
+}
+
+var func = greet('Yuyu');
+func(); // print `hello Yuyu`
+
+sayHello('Jay'); // print `hello Jay`
+
+func(); // print `hello Yuyu`
+</code></pre>
+
+<ul>
+<li><strong>變數的提升 hoisting：</strong></li>
+</ul>
+
+<pre><code class="language-js">var number = 100;
+test();
+
+function test() {
+  console.log(number); // print `undefined`
+
+  if (false) {
+    var number = 123;  // never call
+  }
+}
+</code></pre>
+
+<blockquote>
+<p>關於<a href="https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting">提升 hoisting</a> 可以簡單的理解為<code>提前訪問</code></p>
+</blockquote>
+
+<h2 id="區塊作用域">區塊作用域</h2>
+
+<p>區塊作用域 <strong>Block Scope</strong> 在很多語言都有，但是 JavaScript 沒有，直到 ES6 後才導入此特性。</p>
+
+<p><code>var</code> 與 <code>let / const</code> 的比較：</p>
+
+<ul>
+<li>var 為函數作用域</li>
+<li>let / const 為 區塊作用域</li>
+</ul>
+
+<p>幾個經典的作用域例子：</p>
+
+<pre><code class="language-js">for (var i = 0; i &lt; 5; i++) {
+  setTimeout(function() {
+    console.log(i)
+  }, 1000)
+}
+</code></pre>
+
+<pre><code class="language-js">for (let i = 0; i &lt; 5; i++) {
+  setTimeout(function() {
+    console.log(i)
+  }, 1000)
+}
+</code></pre>
+
+<pre><code class="language-js">let i = 0
+for (; i &lt; 5; i++) {
+  setTimeout(function() {
+    console.log(i)
+  }, 1000)
+}
+</code></pre>
+
+<ul>
+<li>var 在聲明之前被訪問會拋出 <code>undefined</code></li>
+<li>let / const 在聲明之前被訪問會拋出 <code>ReferenceError</code></li>
+</ul>
+
+<pre><code class="language-js">console.log(_var) // undefined
+console.log(_let) // ReferenceError: _let is not defined
+var _var = 1
+let _let = 2
+</code></pre>
+
+<p>根據 ES6 標準規範 <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-let-and-const-declarations">13.3.1</a>：</p>
+
+<p><em>The variables are created when their containing Lexical Environment is instantiated but may not be accessed in any way until the variable’s LexicalBinding is evaluated.</em></p>
+
+<p><em>A variable defined by a LexicalBinding with an Initializer is assigned the value of its Initializer’s AssignmentExpression when the LexicalBinding is evaluated, not when the variable is created. If a LexicalBinding in a let declaration does not have an Initializer the variable is assigned the value undefined when the LexicalBinding is evaluated.</em></p>
+
+<blockquote>
+<p>簡單是說由 let / const 聲明的變量，只有在詞法綁定 (LexicalBinding) 給值後，才能夠被訪問。
+變量的初始化必須經過賦值，如果 let 在綁定過程沒給值，將以 <code>undefined</code> 當作初始值。</p>
+</blockquote>
+
+<ul>
+<li>進一步我們可以觀察到 var 與 let 在聲明都有被 hoisting，都會先在作用域上被創建出來，但是 let 在<strong>詞法綁定之前被訪問</strong>的話會拋出錯誤。</li>
+<li>在<strong>變量被創建</strong>到<strong>變量可以被訪問</strong>（初始化完成）的這一段時間稱之為 <strong>Temporal Dead Zone (TDZ)</strong></li>
+</ul>
+
+<blockquote>
+<p><code>提升 hoisting</code> 是 JS 基本的特性，在有些地方會將 let / const 歸類到無法 hoisting，但其實不然，let / const 也是會受到提升，只是因為 TDZ 作用的關係，所以拋出錯誤 <code>ReferenceError</code>，跟 var 拋出 <code>undefined</code> 有所不同。</p>
+</blockquote>
+
+<h2 id="temporal-dead-zone-tdz">Temporal Dead Zone (TDZ)</h2>
+
+<p>以下我們來看幾個 TDZ 常發生錯誤的例子：</p>
+
+<pre><code class="language-js">let x = x
+
+console.log(x)
+</code></pre>
+
+<pre><code class="language-js">function foo(x = y, y = 1) {
+  console.log(y)
+}
+
+foo(1) // good
+foo(undefined, 1) // ReferenceError: `y is not defined`
+foo() // ReferenceError: `y is not defined`
+</code></pre>
+
+<pre><code class="language-js">function f() { return x }
+f() // ReferenceError
+</code></pre>
+
+<pre><code class="language-js">function f() { return x }
+let x = 1
+f() // nothing error
+</code></pre>
+
+<pre><code class="language-js">let x = 1
+
+function foo(a = 1, b = function(){ x = 2 }){
+  let x = 3
+  b()
+  console.log(x)
+}
+
+foo()
+
+console.log(x)
+
+// babel Compiler: 2, 1
+// Closure Compiler: 3, 2
+// Google Chrome(v55): 3, 2
+// Firefox(v50): 2, 1
+// Edge(v38): 3, 2
+</code></pre>
+
+<pre><code class="language-js">function foo(a = 1, b = function(){ let x = 2 }){
+  b()
+  console.log(x)
+}
+foo()
+
+// Chrome: ReferenceError: x is not defined
+// Firefox: ReferenceError: x is not defined
+</code></pre>
+
+<blockquote>
+<p>雖然 ES6 制定了標準，目前 TDZ 在作用域上各家瀏覽器實作落有不同，所以目前盡量避免在參數預設值上做有副作用的運算</p>
+</blockquote>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="http://five.agency/android-architecture-part-2-clean-architecture/">Android Architecture Part 2</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Yuyu, Lin</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-05-07</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/es6/">ES6</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/clean_architecture_2/">
+            <span class="next-text nav-default">無暇的架構 Clean Architecture II</span>
+            <span class="prev-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuyu.lin.0511@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.facebook.com/yuyu.lin.1460" class="iconfont icon-facebook" title="facebook"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Yuyu, Lin</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.0.1"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

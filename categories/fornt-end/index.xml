@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fornt End on Yuyu</title>
+    <link>http://localhost:1313/categories/fornt-end/</link>
+    <description>Recent content in Fornt End on Yuyu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/fornt-end/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基礎觀念：JavaScript Scope</title>
+      <link>http://localhost:1313/post/javascript_scope/</link>
+      <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/javascript_scope/</guid>
+      <description>JavaScript Scope 變量作用域 JavaScript 有兩種變量作用域： Gloable Scope: 定義在函數之外的為全局變量，整個程序都可以訪問，直到頁面關閉才銷毀。 Local Scope: 定義在函數之內為局部變量，函數</description>
+    </item>
+    
+  </channel>
+</rss>
